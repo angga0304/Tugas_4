@@ -1,0 +1,16 @@
+<h1>Users#index</h1>
+<table class="table table-bordered" style = "width:500px">
+  <tr class='info'>
+    <thead>
+      <th>User Nama</th>
+      <th>Nama</th>
+    </thead>
+  </tr>
+<% @users.each do |user| %>
+  <tr class='warning'>
+    <td><%= user.username %></td>
+    <td><%= user.name %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Create New', new_user_path %>

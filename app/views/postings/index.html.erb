@@ -1,0 +1,28 @@
+<table class="table">
+  <tr>
+<% @n = 0  %>
+<% @postings.each do |posting| %>
+  <% @n +=1 %>
+  <td>
+  <table class="table table-bordered" style="width:150px" >
+    <tr class="info" align="center">
+      <td>
+        <%= link_to image_tag(posting.photo.url(:thumb)), posting.photo.url(:medium), :popup =>['original image'] %>
+      </td>
+    </tr>
+    <tr class="warning" align="center">
+      <td><h2><%= posting.title %></h2></td>
+    </tr>
+    <tr>
+      <td><%= link_to 'Edit', edit_posting_path(posting.id), class: 'btn btn-primary' %> | <%= link_to 'delete', posting_path(posting.id), method: 'DELETE', data:{confirm: 'Delete this posting ?'},class:'btn btn-danger' %></td>
+    </tr>
+  </table>
+  </td>
+  <% if @n % 8 == 0 %>
+    </tr><tr>
+  <% end %>
+
+<% end %>
+  </tr>
+</table>
+<%= link_to "New Posting", new_posting_path %>
